@@ -1,24 +1,45 @@
-#include<vector>
-#include<queue>
+#include <vector>
 using namespace std;
 
-class Solution {
-public:
-    int maxProfit(vector<int>& prices) {
-       int n=prices.size();
-       int **dp=new int*[3]();
-       for(int i=0;i<3;i++){
-           dp[i]=new int[n+1]();
-       }
+class Solution
+{
+  public:
+    int maxProfit(vector<int> &prices)
+    {
+        int n = prices.size();
+        int *minPrice = new int[n]();
+        int *maxPrice = new int[n]();
+        int profit1 = 0, profit2 = 0,profit=0;
 
-       for(int i=1;i<=2;i++){
-           for(int j=1;j<=n;j++){
-               for(int k=1;k<j;k++){
-                   dp[i][j]=max(dp[i][j-1],dp[i-1][j-1]+prices[i-1]-prices[k-1]);
-               }
-           }
-       }
-        
-        return dp[2][n];
+        for (int i = 0; i < n; i++)
+        {
+            if (i == 0)
+                minPrice[i] = prices[i];
+            else
+                minPrice[i] = prices[i] < minPrice[i - 1] ? prices[i] : minPrice[i - 1];
+        }
+        for (int i = n-1; i >=0;i--)
+        {
+            if (i == n-1)
+                maxPrice[i] = prices[i];
+            else
+                maxPrice[i] = prices[i] > maxPrice[i + 1] ? prices[i] : maxPrice[i + 1];
+        }
+
+        for (int i = 0; i < n; i++)
+        {
+            profit1 = 0, profit2 = 0;
+            for (int j = 0; j < i; j++)
+            {
+                profit1 = prices[j] - minPrice[j] > profit1 ? prices[j] - minPrice[j] : profit1;
+            }
+            for (int j = i;j<n;j++)
+            {
+                profit2 = maxPrice[j] -prices[j]> profit2 ? maxPrice[j] -prices[j] : profit2;
+            }
+            profit=profit>profit1+profit2?profit:profit1+profit2;
+        }
+
+        return profit;
     }
 };
