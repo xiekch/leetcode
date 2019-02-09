@@ -1,23 +1,31 @@
-// no finished
+// https://www.cnblogs.com/grandyang/p/4465932.html
 #include <vector>
 using namespace std;
 
-class Solution {
-public:
-    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        double result=0,temp1,temp2;
-        int mid1=0,mid2=0;
-        int low1=0,low2=0,high1=nums1.size()-1,high2=nums2.size()-1;
-        bool flag1=false,flag2=false;
-        while(!flag1&&!flag2){
-            while (low1<=high1){
-                mid1=(low1+high1)/2;
-                mid2=(low2+high2)/2;
-                if(nums1[mid1]==nums2[mid2]){
-                    flag1=flag2=true;
-                }
-            }
-        }
+class Solution
+{
+  public:
+    double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2)
+    {
+        int m = nums1.size(), n = nums2.size(), l = (m + n + 1) / 2, r = (m + n + 2) / 2;
+        return (findKNum(nums1, 0, nums2, 0, l) + findKNum(nums1, 0, nums2, 0, r)) / 2.0;
+    }
 
+    int findKNum(vector<int> &nums1, int i, vector<int> &nums2, int j, int k)
+    {
+        if (i >= nums1.size())
+            return nums2[j + k - 1];
+        if (j >= nums2.size())
+            return nums1[i + k - 1];
+        if (k == 1)
+            return min(nums1[i], nums2[j]);
+        if ((i + k / 2 - 1) >= nums1.size())
+            return findKNum(nums1, i, nums2, j + k / 2, k-k / 2);
+        else if ((j + k / 2 - 1) >= nums2.size())
+            return findKNum(nums1, i + k / 2, nums2, j, k-k / 2);
+        else if ((nums1[i + k / 2 - 1] < nums2[j + k / 2 - 1]))
+            return findKNum(nums1, i + k / 2, nums2, j, k-k / 2);
+        else //if (((j + k / 2 - 1) < nums2.size() && nums2[j + k / 2 - 1] < nums1[i + k / 2 - 1]) || ((i + k / 2 - 1) > nums1.size()))
+            return findKNum(nums1, i, nums2, j + k / 2, k-k / 2);
     }
 };
