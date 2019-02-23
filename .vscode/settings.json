@@ -3,7 +3,8 @@
         "stack": "cpp",
         "vector": "cpp",
         "string": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "ostream": "cpp"
     },
     "files.exclude": {
         "**/.classpath": true,
