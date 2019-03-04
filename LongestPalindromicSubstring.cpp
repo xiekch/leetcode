@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 using namespace std;
-
+// BF
 class Solution {
 public:
     string longestPalindrome(string s) {
@@ -11,28 +11,27 @@ public:
             if(i%2==0){
                 len=1;
                 for(int start=i-2,end=i+2;start>=0&&end<2*n-1;start-=2,end+=2,len+=2){
-                    if(s[start]!=s[end])break;
+                    if(s[start/2]!=s[end/2])break;
                 }
             }else{
                 len=0;
                 for(int start=i-1,end=i+1;start>=0&&end<2*n-1;start-=2,end+=2,len+=2){
-                    if(s[start]!=s[end])break;
+                    if(s[start/2]!=s[end/2])break;
                 }
             }
-            
             if(len>maxlen){
-                r=i;
+                r=(i+1)/2-len/2;
                 maxlen=len;
             }
         }
 
-        return s.substr(r-maxlen/2,maxlen);
+        return s.substr(r,maxlen);
     }
 };
 
 int main(){
     Solution s;
-    cout<<s.longestPalindrome("aa")<<endl;
+    cout<<s.longestPalindrome("babad")<<endl;
 
     return 0;
 }

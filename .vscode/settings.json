@@ -4,7 +4,8 @@
         "vector": "cpp",
         "string": "cpp",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "queue": "cpp"
     },
     "files.exclude": {
         "**/.classpath": true,
