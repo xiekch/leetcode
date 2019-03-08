@@ -1,0 +1,28 @@
+#include <vector>
+#include <cmath>
+#include <iostream>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> grayCode(int n) {
+        vector<int>result;
+        result.push_back(0);
+        for(int i=0;i<n;i++){
+            int cur=result.size(),add=1<<i;
+            while(cur--){
+                result.push_back(result[cur]+add);
+            }
+        }
+
+        return result;
+    }
+};
+
+int main(){
+    Solution s;
+    vector<int> v=s.grayCode(3);
+    for(int i=0;i<v.size();i++){
+        cout<<v[i]<<endl;
+    }
+}
