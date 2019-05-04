@@ -1,7 +1,7 @@
 #include <vector>
 #include <iostream>
 using namespace std;
-
+// greedy
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
