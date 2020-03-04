@@ -2,19 +2,18 @@
 #include <string>
 using namespace std;
 
-class Solution
-{
+class Solution {
   public:
-    int longestValidParentheses(string s)
-    {
+    int longestValidParentheses(string s) {
         stack<int> st;
         int maxLength = 0, curLength = 0;
 
-        for (int i = 0; i < s.size(); i++)
-        {
-            if(!st.empty()&&s[i]==')'&&s[st.top()]=='(')st.pop();
-            else st.push(i);
-            
+        for (int i = 0; i < s.size(); i++) {
+            if (!st.empty() && s[i] == ')' && s[st.top()] == '(')
+                st.pop();
+            else
+                st.push(i); // push the index
+
             if (!st.empty())
                 curLength = i - st.top();
             else
