@@ -2,6 +2,9 @@
 #include <vector>
 using namespace std;
 
+// constraint satisfaction problem
+// open >= close
+// open <= n
 class Solution {
     int n;
     vector<string> res;

@@ -12,6 +12,13 @@ using namespace std;
 
 // recursion
 // find the logic(state transitions)!
+// the key point is '*'
+// - *
+//   - match the preceding element
+//   - dont match the preceding element
+// - no *
+//   - match the preceding element
+
 class Solution {
   public:
     bool isMatch(string s, string p) {
