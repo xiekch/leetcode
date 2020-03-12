@@ -10,9 +10,6 @@ void printVector(vector<int> &vec) {
     cout << endl;
 }
 class Solution {
-    int *lowR;
-    int *lowL;
-
   public:
     int largestRectangleArea(vector<int> &heights) {
         int n = heights.size(), area = 0;

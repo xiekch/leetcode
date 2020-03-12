@@ -6,7 +6,7 @@ using namespace std;
 // brute force
 // CSP backtracking
 // 4 1 8 7 true (8-4)*(7-1)
-
+// 1 3 4 6 true 6/(1-3/4)
 void printVector(const vector<float> &a) {
     for (int i : a) {
         cout << i << " ";
