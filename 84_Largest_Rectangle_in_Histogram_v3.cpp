@@ -46,8 +46,7 @@ class Solution {
 // [2,1,5,6,2,3,4,6,2,3] 16
 int main(int argc, char const *argv[]) {
     Solution sol;
-    int testset[] = {2, 1, 5, 6, 2, 3, 4, 6, 2, 3};
-    vector<int> test(testset, testset + 10);
+    vector<int> test = {2, 1, 5, 6, 2, 3, 4, 6, 2, 3};
     int ans = sol.largestRectangleArea(test);
     cout << ans << endl;
     return 0;

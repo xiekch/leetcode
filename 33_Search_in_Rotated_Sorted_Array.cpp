@@ -63,8 +63,7 @@ class Solution {
 // Output: -1
 // [3,1] 1
 int main(int argc, char const *argv[]) {
-    int arr[] = {4, 5, 6, 7, 0, 1, 2};
-    vector<int> test(arr, arr + 6);
+    vector<int> test = {4, 5, 6, 7, 0, 1, 2};
     Solution sol;
     int ans = sol.search(test, 0);
     cout << ans << endl;

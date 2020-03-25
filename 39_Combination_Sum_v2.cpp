@@ -40,12 +40,10 @@ class Solution {
 //   [3,5]
 // ]
 int main(int argc, char const *argv[]) {
-    int arr1[] = {2, 3, 5};
-    int arr2[] = {2, 3, 6, 7};
-    // vector<int> candidates(arr1, arr1 + 3);
-    vector<int> candidates(arr2, arr2 + 4);
+    vector<int> candidates1 = {2, 3, 5};
+    vector<int> candidates2 = {2, 3, 6, 7};
     Solution sol;
-    auto ans = sol.combinationSum(candidates, 8);
+    auto ans = sol.combinationSum(candidates2, 8);
 
     for (auto i : ans) {
         for (auto j : i) {

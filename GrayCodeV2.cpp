@@ -1,17 +1,17 @@
-#include <vector>
 #include <cmath>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     vector<int> grayCode(int n) {
-        vector<int>result;
+        vector<int> result;
         result.push_back(0);
-        for(int i=0;i<n;i++){
-            int cur=result.size(),add=1<<i;
-            while(cur--){
-                result.push_back(result[cur]+add);
+        for (int i = 0; i < n; i++) {
+            int cur = result.size(), add = 1 << i;
+            while (cur--) {
+                result.push_back(result[cur] + add);
             }
         }
 
@@ -19,10 +19,10 @@ public:
     }
 };
 
-int main(){
+int main() {
     Solution s;
-    vector<int> v=s.grayCode(3);
-    for(int i=0;i<v.size();i++){
-        cout<<v[i]<<endl;
+    vector<int> v = s.grayCode(3);
+    for (int i = 0; i < v.size(); i++) {
+        cout << v[i] << endl;
     }
 }

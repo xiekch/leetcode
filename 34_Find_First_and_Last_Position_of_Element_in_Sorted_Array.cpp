@@ -52,8 +52,7 @@ class Solution {
 // Output: [3,4]
 
 int main(int argc, char const *argv[]) {
-    int arr[] = {5, 7, 7, 8, 8, 10};
-    vector<int> test(arr, arr + 6);
+    vector<int> test = {5, 7, 7, 8, 8, 10};
     Solution sol;
     vector<int> res = sol.searchRange(test, 10);
     cout << res[0] << " " << res[1] << endl;

@@ -29,13 +29,8 @@ class Solution {
 };
 
 int main(int argc, char const *argv[]) {
-    vector<int> a, b;
-    a.push_back(1), a.push_back(2);
-    b.push_back(2), b.push_back(4);
     Solution s;
-    vector<vector<int>> test, ans;
-    test.push_back(b);
-    test.push_back(a);
+    vector<vector<int>> test = {{1, 2}, {2, 4}}, ans;
     ans = s.merge(test);
     print(ans);
     vector<vector<int>> test2;

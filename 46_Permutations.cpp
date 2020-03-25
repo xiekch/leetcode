@@ -34,8 +34,7 @@ class Solution {
 
 int main(int argc, char const *argv[]) {
     Solution sol;
-    int arr[] = {1, 2, 3, 4};
-    vector<int> nums(arr, arr + 4);
+    vector<int> nums = {1, 2, 3, 4};
     auto ans = sol.permute(nums);
     for (auto i : ans) {
         for (auto j : i) {
