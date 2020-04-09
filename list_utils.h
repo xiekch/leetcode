@@ -18,12 +18,12 @@ class ListUtil {
   public:
     ListUtil() {}
     static ListNode *build(const vector<int> &nums) {
-        ListNode dummpy, *p = &dummpy;
+        ListNode dummy, *p = &dummy;
         for (int i : nums) {
             p->next = new ListNode(i);
             p = p->next;
         }
-        return dummpy.next;
+        return dummy.next;
     }
     ~ListUtil() {}
 
