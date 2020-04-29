@@ -12,40 +12,40 @@ struct TreeNode {
     TreeNode *right;
     TreeNode() : left(NULL), right(NULL) {}
     TreeNode(int v) : val(v), left(NULL), right(NULL) {}
-    TreeNode(int v, TreeNode *right, TreeNode *left) : val(v), left(left), right(right) {}
+    TreeNode(int v, TreeNode *right, TreeNode *left)
+        : val(v), left(left), right(right) {}
 };
 
 class TreeUtil {
   private:
-    static bool toInt(const string &str, int &num) {
+    static TreeNode *toNode(const string &str) {
         if (str.size() == 0 || str == "null" || str == "NULL") {
-            return false;
+            return NULL;
         }
-        num = std::stoi(str);
-        return true;
+        return new TreeNode(std::stoi(str));
     }
 
   public:
     TreeUtil() {}
-    static TreeNode *build(vector<string> nums) {
-        int num = 0;
-        if (nums.size() == 0 || !toInt(nums[0], num))
+    static TreeNode *buildTree(vector<string> nums) {
+        TreeNode *root = toNode(nums[0]);
+        if (nums.size() == 0 || root == NULL)
             return NULL;
-        toInt(nums[0], num);
-        TreeNode *root = new TreeNode(num);
         queue<TreeNode *> qu;
         qu.push(root);
         for (int i = 1; i < nums.size() && !qu.empty();) {
             TreeNode *node = qu.front();
             qu.pop();
-            if (toInt(nums[i], num)) {
-                node->left = new TreeNode(num);
-                qu.push(node->left);
+            TreeNode *next = toNode(nums[i]);
+            if (next != NULL) {
+                node->left = next;
+                qu.push(next);
             }
             i++;
-            if (i < nums.size() && toInt(nums[i], num)) {
-                node->right = new TreeNode(num);
-                qu.push(node->right);
+            next = toNode(nums[i]);
+            if (i < nums.size() && next != NULL) {
+                node->right = next;
+                qu.push(next);
             }
             i++;
         }
@@ -89,7 +89,7 @@ class TreeUtil {
             {"5", "1", "4", "null", "null", "3", "6"},
             {"10", "5", "15", "null", "null", "11", "20", "6", "16"}};
         for (auto nums : testset) {
-            TreeNode *root = TreeUtil::build(nums);
+            TreeNode *root = TreeUtil::buildTree(nums);
             TreeUtil::printTree(root);
         }
     }

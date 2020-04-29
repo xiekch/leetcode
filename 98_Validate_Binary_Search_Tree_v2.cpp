@@ -63,7 +63,7 @@ int main(int argc, char const *argv[]) {
         {"2147483647"},
         {"-2147483648"}};
     for (auto nums : testset) {
-        TreeNode *root = TreeUtil::build(nums);
+        TreeNode *root = TreeUtil::buildTree(nums);
         cout << sol.isValidBST(root) << endl;
     }
     return 0;
