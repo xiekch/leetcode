@@ -13,7 +13,7 @@ class TreeNode {
 
 public class TreeUtils {
     private static TreeNode toNode(final String str) {
-        if (str.length() == 0 || str.toLowerCase() == "null") {
+        if (str.length() == 0 || str.toLowerCase().equals("null")) {
             return null;
         }
         return new TreeNode(Integer.valueOf(str));
