@@ -20,9 +20,9 @@ public class TreeUtils {
     }
 
     public static TreeNode buildTree(String[] nums) {
-        TreeNode root = toNode(nums[0]);
-        if (nums.length == 0 || root == null)
+        if (nums.length == 0 || toNode(nums[0]) == null)
             return null;
+        TreeNode root = toNode(nums[0]);
 
         Queue<TreeNode> qu = new LinkedList<>();
         qu.add(root);
@@ -34,10 +34,12 @@ public class TreeUtils {
                 qu.add(next);
             }
             i++;
-            next = toNode(nums[i]);
-            if (i < nums.length && next != null) {
-                node.right = next;
-                qu.add(next);
+            if (i < nums.length) {
+                next = toNode(nums[i]);
+                if (next != null) {
+                    node.right = next;
+                    qu.add(next);
+                }
             }
             i++;
         }
