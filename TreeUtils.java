@@ -72,4 +72,15 @@ public class TreeUtils {
             System.out.printf("\n");
         }
     }
+
+    public static TreeNode getNode(TreeNode root, int val) {
+        if (root == null)
+            return null;
+        if (root.val == val)
+            return root;
+        TreeNode left = getNode(root.left, val), right = getNode(root.right, val);
+        if (left != null)
+            return left;
+        return right;
+    }
 }
