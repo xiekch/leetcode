@@ -13,6 +13,7 @@ class Solution {
             str += ch;
             str += "#";
         }
+        // radius
         vector<int> p(str.size(), 0);
         int maxlen = 0, mid = 0;
         int mright = 0, id = 0;
@@ -28,7 +29,7 @@ class Solution {
             }
 
             if (p[i] + i > mright) {
-                mright = p[i] + 1;
+                mright = p[i] + i;
                 id = i;
             }
             if (p[i] > maxlen) {
