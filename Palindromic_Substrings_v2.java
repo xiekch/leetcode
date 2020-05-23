@@ -1,4 +1,6 @@
 // Manacher's Algorithm
+// https://leetcode.com/problems/longest-palindromic-substring/solution/
+// https://www.cnblogs.com/love-yh/p/7072161.html
 class Solution {
     public int countSubstrings(String s) {
         int res = 0;
