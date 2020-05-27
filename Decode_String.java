@@ -1,45 +1,47 @@
 import java.util.ArrayList;
 
 // S -> AS | eps
-// A -> num[S]|a
-// LL(1) language
+// A -> num[S]|str
 class Solution {
     private ArrayList<String> tokens;
 
+    // break s into tokens
     private void seperateTokens(String s) {
         tokens = new ArrayList<>();
         for (int i = 0; i < s.length();) {
             if (s.charAt(i) == '[' || s.charAt(i) == ']') {
                 tokens.add(s.substring(i, i + 1));
                 i++;
-            } else if (isDigit(s, i)) {
-                int count = 0;
-                for (; isDigit(s, i); i++) {
-                    count *= 10;
-                    count += s.charAt(i) - '0';
-                }
-                tokens.add(String.valueOf(count));
-            } else if (isLetter(s, i)) {
+            } else if (Character.isDigit(s.charAt(i))) {
                 int j = i;
-                while (j < s.length() && isLetter(s, j))
+                while (j < s.length() && Character.isDigit(s.charAt(j))) {
                     j++;
+                }
+                tokens.add(s.substring(i, j));
+                i = j;
+            } else if (Character.isLetter((s.charAt(i)))) {
+                int j = i;
+                while (j < s.length() && Character.isLetter((s.charAt(j)))) {
+                    j++;
+                }
                 tokens.add(s.substring(i, j));
                 i = j;
             }
         }
     }
 
+    // find the end index of A
     private int seperateA(int beginIndex, int endIndex) {
         if (tokens.isEmpty() || beginIndex >= tokens.size() || beginIndex >= endIndex)
             return endIndex;
 
         int i = beginIndex;
-        // a
-        if (isLetter(tokens.get(i), 0)) {
+        // str
+        if (Character.isLetter(tokens.get(i).charAt(0))) {
             return i + 1;
         }
         int count = 0;
-        // num
+        // num[S]
         for (i++; i < endIndex; i++) {
             if (tokens.get(i).equals("["))
                 count++;
@@ -51,24 +53,16 @@ class Solution {
         return i + 1;
     }
 
-    private boolean isDigit(String s, int i) {
-        return s.charAt(i) >= '0' && s.charAt(i) <= '9';
-    }
-
-    private boolean isLetter(String s, int i) {
-        return (s.charAt(i) >= 'a' && s.charAt(i) <= 'z') || (s.charAt(i) >= 'A' && s.charAt(i) <= 'Z');
-    }
-
+    // decode A
     private String decodeA(int beginIndex, int endIndex) {
         if (beginIndex >= endIndex)
             return "";
         StringBuilder sb = new StringBuilder();
         int i = beginIndex;
-        if (isDigit(tokens.get(i), 0)) {
+        if (Character.isDigit(tokens.get(i).charAt(0))) {
             int count = Integer.valueOf(tokens.get(i));
             i += 2;
             String sub = decodeS(i, endIndex - 1);
-            // System.out.println(sub);
             for (int j = 0; j < count; j++) {
                 sb.append(sub);
             }
@@ -79,6 +73,7 @@ class Solution {
         }
     }
 
+    // decode S
     private String decodeS(int startIndex, int endIndex) {
         if (tokens.isEmpty() || startIndex >= endIndex)
             return "";
@@ -93,7 +88,7 @@ class Solution {
 }
 
 // S -> AS | eps
-// A -> num[S]|a
+// A -> num[S]|str
 
 // s = "3[a]2[bc]", return "aaabcbc".
 // s = "3[a2[c]]", return "accaccacc".

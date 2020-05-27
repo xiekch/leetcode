@@ -1,21 +1,21 @@
-#include <regex>
 #include <iostream>
+#include <regex>
 #include <string>
 using namespace std;
 
 class Solution {
-public:
+  public:
     bool isNumber(string s) {
         regex pattern(" *[+-]?((\\d+\\.?\\d*)|(\\.\\d+))(e[+-]?\\d+)? *");
-        return (regex_match(s,pattern));       
+        return (regex_match(s, pattern));
     }
 };
 
-int main(){
+int main() {
     string s;
     Solution sol;
-    while(cin>>s){
-        cout<<sol.isNumber(s)<<endl;
+    while (cin >> s) {
+        cout << sol.isNumber(s) << endl;
     }
     return 0;
 }

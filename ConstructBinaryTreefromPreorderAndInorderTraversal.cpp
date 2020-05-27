@@ -8,21 +8,25 @@
  * };
  */
 class Solution {
-public:
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        if(preorder.size()==0)return nullptr;
-        return createTree(&preorder[0],&inorder[0],preorder.size());
+  public:
+    TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
+        if (preorder.size() == 0)
+            return nullptr;
+        return createTree(&preorder[0], &inorder[0], preorder.size());
     }
-    
-    TreeNode* createTree(int* preorder,int* inorder,int length){
-        if(length==0)return nullptr;
+
+    TreeNode *createTree(int *preorder, int *inorder, int length) {
+        if (length == 0)
+            return nullptr;
         int i;
-        for(i=0;i<length;i++){
-            if(inorder[i]==preorder[0])break;
+        for (i = 0; i < length; i++) {
+            if (inorder[i] == preorder[0])
+                break;
         }
-        TreeNode* n=new TreeNode(preorder[0]);
-        n->left= createTree(preorder+1,inorder,i);
-        n->right= createTree(preorder+i+1,inorder+i+1,length-i-1);
+        TreeNode *n = new TreeNode(preorder[0]);
+        n->left = createTree(preorder + 1, inorder, i);
+        n->right =
+            createTree(preorder + i + 1, inorder + i + 1, length - i - 1);
         return n;
     }
 };
