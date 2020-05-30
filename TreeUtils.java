@@ -6,7 +6,10 @@ class TreeNode {
     TreeNode left;
     TreeNode right;
 
-    TreeNode(int x) {
+    public TreeNode() {
+    }
+
+    public TreeNode(int x) {
         val = x;
     }
 }
