@@ -10,7 +10,7 @@ class Solution {
         if (matrix.size() == 0)
             return 0;
         int maximal = 0;
-        // one more row and column to compact code
+        // add one more row and column to compact code
         vector<vector<int>> dp(matrix.size() + 1,
                                vector<int>(matrix[0].size() + 1, 0));
         for (int i = 1; i <= matrix.size(); i++) {
