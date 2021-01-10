@@ -28,8 +28,7 @@ int main() {
     Solution sol;
     vector<int> v;
     int temp = 1;
-    // freopen("./JumpGameII.in","r",stdin);
-    freopen("./test.in", "r", stdin);
+    freopen("./JumpGameII.in","r",stdin);
     while (scanf("%d", &temp) == 1) {
         v.push_back(temp);
     }
