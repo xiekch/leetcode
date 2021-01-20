@@ -1,9 +1,10 @@
+#include <iostream>
 #include <vector>
 using namespace std;
 
 // https://leetcode.com/problems/maximal-rectangle/discuss/29054/Share-my-DP-solution
 class Solution {
-  public:
+public:
     int maximalRectangle(vector<vector<char>> &matrix) {
         if (0 == matrix.size()) {
             return 0;
@@ -41,3 +42,10 @@ class Solution {
         return maximum;
     }
 };
+
+int main() {
+    Solution solution;
+    vector<vector<char>> testcase = {{'0', '1', '0'}, {'1', '1', '1'}};
+    cout << solution.maximalRectangle(testcase) << endl;
+    return 0;
+}
