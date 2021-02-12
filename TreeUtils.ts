@@ -10,7 +10,7 @@ class TreeNode {
 }
 
 function buildTree(nums: number[]): TreeNode | null {
-    if (nums.length === 0) return null
+    if (nums.length === 0 || nums[0] === null) return null
     let root = new TreeNode(nums[0])
     let qu = new Array<TreeNode>()
     qu.push(root)
