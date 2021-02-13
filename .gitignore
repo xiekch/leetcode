@@ -6,3 +6,6 @@ t.*
 Test.*
 test.*
 META-INF/
+package.json
+package-lock.json
+node_modules/
