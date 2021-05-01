@@ -7,17 +7,10 @@ class TreeNode(var `val`: Int) {
 
 class TreeUtils {
     companion object {
-        private fun toNode(str: String): TreeNode? {
-            if (str.isEmpty() || str.toLowerCase() == "null") {
+        fun buildTree(nums: Array<Int?>): TreeNode? {
+            if (nums.isEmpty())
                 return null
-            }
-            return TreeNode(Integer.valueOf(str))
-        }
-
-        fun buildTree(nums: Array<String>): TreeNode? {
-            if (nums.isEmpty() || toNode(nums[0]) == null)
-                return null
-            val root = toNode(nums[0]) ?: return null
+            val root = TreeNode(nums[0]!!)
             val qu = LinkedList<TreeNode>()
             qu.add(root)
             var i = 1
@@ -25,18 +18,20 @@ class TreeUtils {
                 if (qu.isEmpty()) {
                     break
                 }
-                val node = qu.poll()
-                var next = toNode(nums[i])
-                if (next != null) {
-                    node.left = next
-                    qu.add(next)
+                val node = qu.poll()!!
+                nums[i]?.let {
+                    TreeNode(it)
+                }?.let {
+                    node.left = it
+                    qu.add(it)
                 }
                 i++
                 if (i < nums.size) {
-                    next = toNode(nums[i])
-                    if (next != null) {
-                        node.right = next
-                        qu.add(next)
+                    nums[i]?.let {
+                        TreeNode(it)
+                    }?.let {
+                        node.right = it
+                        qu.add(it)
                     }
                 }
                 i++
@@ -79,8 +74,8 @@ class TreeUtils {
                 return null
             if (root.`val` == `val`)
                 return root
-            var left = getNode(root.left, `val`)
-            var right = getNode(root.right, `val`)
+            val left = getNode(root.left, `val`)
+            val right = getNode(root.right, `val`)
             if (left != null)
                 return left
             return right
