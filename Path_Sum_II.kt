@@ -11,30 +11,25 @@
 class Solution {
     fun pathSum(root: TreeNode?, targetSum: Int): List<List<Int>> {
         val res: ArrayList<List<Int>> = ArrayList()
-        if (root == null) return res
-        dfs(root, targetSum - root.`val`, ArrayList(), res)
+        dfs(root, targetSum, ArrayList(), res)
         return res
     }
 
     private fun dfs(
-        root: TreeNode,
+        root: TreeNode?,
         cur: Int,
         path: ArrayList<Int>,
         res: ArrayList<List<Int>>
     ) {
+        if (root == null) return
         path.add(root.`val`)
-        if (root.right == null && root.left == null && cur == 0) {
+        if (root.right == null && root.left == null && cur == root.`val`) {
             res.add(path.toList())
-            return
+        } else {
+            dfs(root.left, cur - root.`val`, path, res)
+            dfs(root.right, cur - root.`val`, path, res)
         }
-        root.left?.let {
-            dfs(it, cur - it.`val`, path, res)
-            path.removeAt(path.lastIndex)
-        }
-        root.right?.let {
-            dfs(it, cur - it.`val`, path, res)
-            path.removeAt(path.lastIndex)
-        }
+        path.removeAt(path.lastIndex)
     }
 }
 
