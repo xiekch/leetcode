@@ -34,4 +34,18 @@ public class ListUtils {
         }
         System.out.println();
     }
+
+    public static ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+        ListNode node = head, cur = head.next, temp;
+        while (cur != null) {
+            temp = cur.next;
+            cur.next = node;
+            node = cur;
+            cur = temp;
+        }
+        head.next = null;
+        return node;
+    }
 };
