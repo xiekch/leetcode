@@ -4,7 +4,7 @@
 using namespace std;
 // Manacher's Algorithm
 class Solution {
-  public:
+public:
     string longestPalindrome(string s) {
         if (s.size() == 0)
             return "";
@@ -19,7 +19,7 @@ class Solution {
         int mright = 0, id = 0;
         for (int i = 1; i < str.size() - 1; i++) {
             if (i < mright) {
-                p[i] = min(mright - id, p[2 * id - i]);
+                p[i] = min(mright - i, p[2 * id - i]);
             } else
                 p[i] = 1;
 
@@ -43,7 +43,7 @@ class Solution {
 
 int main(int argc, char const *argv[]) {
     Solution sol;
-    string testset[] = {"babad", "aa","cbbd","baaaaaaab","a",""};
+    string testset[] = {"babad", "aa", "cbbd", "baaaaaaab", "a", "babadada"};
     for (auto test : testset)
         cout << sol.longestPalindrome(test) << endl;
     return 0;
