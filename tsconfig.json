@@ -3,9 +3,14 @@
         "module": "commonjs",
         "target": "es2016",
         "jsx": "preserve",
+        "outDir": "./dist",
         "strictFunctionTypes": true,
+        "strictNullChecks": true, // 关键：启用后，null/undefined 被视为独立类型，必须显式处理
         "sourceMap": true,
-        "lib": ["ES6", "DOM"]
+        "lib": [
+            "ES6",
+            "DOM"
+        ]
     },
     "exclude": [
         "node_modules",
