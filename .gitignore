@@ -9,3 +9,4 @@ META-INF/
 package.json
 package-lock.json
 node_modules/
+*.dSYM/
