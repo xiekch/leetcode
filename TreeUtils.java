@@ -12,11 +12,17 @@ class TreeNode {
     public TreeNode(int x) {
         val = x;
     }
+
+    public TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
 }
 
 public class TreeUtils {
     private static TreeNode toNode(final String str) {
-        if (str.length() == 0 || str.toLowerCase().equals("null")) {
+        if (str == null || str.length() == 0 || str.toLowerCase().equals("null")) {
             return null;
         }
         return new TreeNode(Integer.valueOf(str));
